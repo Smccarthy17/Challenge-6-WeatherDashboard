@@ -16,8 +16,8 @@ function displayWeather() {
         city +
         ',us&units=imperial&appid=' +
         apiKey;
-    var lat = response2.coord.lat;
-    var lon = response2.coord.lon;
+    var lat = 51.5085;
+    var lon = -0.1257;
     var request2URL =
         'http://api.openweathermap.org/data/2.5/onecall?lat=' +
         lat +
@@ -28,24 +28,28 @@ function displayWeather() {
 
     fetch(request1URL)
         .then(function (response1) {
-            console.log(response1);
             return response1.json();
         })
         .then(function (data) {
             console.log(data);
             var currentTempEl = document.getElementById('temp');
+            var currentWindEl = document.getElementById('wind');
+            var currentHumidityEl = document.getElementById('humidity');
+            var cityname = document.getElementById('cityname');
+            var currentDates = moment.unix(data.dt).format('MM/DD/YYYY');
+            cityname.textContent = data.name + ' ' + currentDates;
             currentTempEl.textContent = data.main.temp;
-            currentTempEl.textContent = data.wind.speed;
-            currentTempEl.textContent = data.main.humidity;
+            currentWindEl.textContent = data.wind.speed;
+            currentHumidityEl.textContent = data.main.humidity;
             console.log(data.main.temp);
             console.log(data.wind.speed);
             console.log(data.main.humidity);
         });
 
-    fetch(request2URL).then(function (response2) {
-        console.log(response2);
-        return response2.json();
-    });
+    // // fetch(request2URL).then(function (response2) {
+    //     console.log(response2);
+    //     return response2.json();
+    // // });
     // .then(function (data) {
     // console.log(data);
     // var currentUVI = document.getElementById('')
