@@ -16,11 +16,13 @@ function displayWeather() {
         city +
         ',us&units=imperial&appid=' +
         apiKey;
+    var lat = response2.coord.lat;
+    var lon = response2.coord.lon;
     var request2URL =
         'http://api.openweathermap.org/data/2.5/onecall?lat=' +
         lat +
         '&lon=' +
-        long +
+        lon +
         '&units=imperial&appid=' +
         apiKey;
 
@@ -44,7 +46,6 @@ function displayWeather() {
         console.log(response2);
         return response2.json();
     });
-
     // .then(function (data) {
     // console.log(data);
     // var currentUVI = document.getElementById('')
