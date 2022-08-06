@@ -4,7 +4,9 @@ var forecast = document.getElementById('forecast');
 const apiKey = 'cc14ffc03b442925b564b8a1b5bba2c9';
 
 searchButton.addEventListener('click', function () {
-    displayWeather();
+    var city = searchCity.value;
+    displayWeather(city);
+    console.log('click');
 });
 function uvindex(lat, lon) {
     var request2URL =
@@ -21,16 +23,26 @@ function uvindex(lat, lon) {
             return response2.json();
         })
         .then(function (data) {
-            console.log('THIS IS UVI DATA', data);
+            // console.log('THIS IS UVI DATA', data);
             // console.log(data.current.uvi);
             var currentUVI = document.getElementById('uvi');
             currentUVI.textContent = data.daily[0].uvi;
             displayFiveday(data.daily);
         });
 }
+
+function previousSearches(city) {
+    var prevSearchEl = document.getElementById('recent');
+    var recentSearchBtn = document.createElement('button');
+    recentSearchBtn.textContent = city;
+    console.log(recentSearchBtn);
+    recentSearchBtn.addEventListener('click', function () {});
+    prevSearchEl.appendChild(recentSearchBtn);
+}
+
 // funtions to fetch API's to show present and future weather
-function displayWeather() {
-    var city = searchCity.value;
+function displayWeather(city) {
+    previousSearches(city);
     var request1URL =
         'https://api.openweathermap.org/data/2.5/weather?q=' +
         city +
@@ -68,17 +80,19 @@ function displayWeather() {
 function displayFiveday(daily) {
     // console.log(daily);
     for (i = 1; i < 6; i++) {
-        console.log(daily[i]);
+        // console.log(daily[i]);
         // console.log(daily[i].dt);
-        console.log(daily[i].humidity);
+        // console.log(daily[i].humidity);
         // console.log(daily[i].temp.day);
         // console.log(daily[i].wind_speed);
         // console.log(daily[i].weather[0].icon);
+
         var dates = document.createElement('p');
         var currentDates = moment.unix(daily[i].dt).format('MM/DD/YYYY');
         // console.log(currentDates);
         dates.textContent = currentDates;
         forecast.appendChild(dates);
+
         var imageEl = document.createElement('img');
         imageEl.src =
             'http://openweathermap.org/img/w/' +
@@ -86,15 +100,17 @@ function displayFiveday(daily) {
             '.png';
         // console.log(imageEl);
         forecast.appendChild(imageEl);
+
         var tempEl = document.createElement('p');
-        tempEl.textContent = 'temp: ' + daily[i].temp.day;
+        tempEl.textContent = 'temp: ' + daily[i].temp.day + ' F';
         forecast.appendChild(tempEl);
+
         var windEl = document.createElement('p');
-        windEl.textContent = 'wind speed: ' + daily[i].wind_speed;
+        windEl.textContent = 'wind speed: ' + daily[i].wind_speed + ' MPH';
         forecast.appendChild(windEl);
 
         var humidityEl = document.createElement('p');
-        humidityEl.textContent = 'humidity: ' + daily[i].humidity;
+        humidityEl.textContent = 'humidity: ' + daily[i].humidity + '%';
         forecast.appendChild(humidityEl);
     }
 }
