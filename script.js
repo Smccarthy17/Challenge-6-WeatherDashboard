@@ -1,13 +1,39 @@
 var searchButton = document.getElementById('searchButton');
 var searchCity = document.getElementById('city');
 var forecast = document.getElementById('forecast');
+var cityList;
+if (localStorage.getItem('cityname') === null) {
+    cityList = [];
+} else {
+    cityList = JSON.parse(localStorage.getItem('cityname'));
+}
 const apiKey = 'cc14ffc03b442925b564b8a1b5bba2c9';
 
 searchButton.addEventListener('click', function () {
     var city = searchCity.value;
     displayWeather(city);
-    console.log('click');
+    if (cityList.indexOf(city) === -1) {
+        storeCity(city);
+        previousSearches(city);
+    }
+
+    // console.log('click');
 });
+
+function storeCity(cityname) {
+    cityList.push(cityname);
+    console.log(cityList);
+    localStorage.setItem('cityname', JSON.stringify(cityList));
+}
+
+function searchHistory() {
+    var savedCities = JSON.parse(localStorage.getItem('cityname'));
+    console.log('this is get item', savedCities);
+    for (i = 0; i < savedCities.length; i++) {
+        previousSearches(savedCities[i]);
+    }
+}
+
 function uvindex(lat, lon) {
     var request2URL =
         'http://api.openweathermap.org/data/2.5/onecall?lat=' +
@@ -35,14 +61,16 @@ function previousSearches(city) {
     var prevSearchEl = document.getElementById('recent');
     var recentSearchBtn = document.createElement('button');
     recentSearchBtn.textContent = city;
-    console.log(recentSearchBtn);
-    recentSearchBtn.addEventListener('click', function () {});
+    // console.log(recentSearchBtn);
+    recentSearchBtn.addEventListener('click', function () {
+        console.log(this.innerHTML);
+        displayWeather(this.innerHTML);
+    });
     prevSearchEl.appendChild(recentSearchBtn);
 }
 
 // funtions to fetch API's to show present and future weather
 function displayWeather(city) {
-    previousSearches(city);
     var request1URL =
         'https://api.openweathermap.org/data/2.5/weather?q=' +
         city +
@@ -79,6 +107,7 @@ function displayWeather(city) {
 
 function displayFiveday(daily) {
     // console.log(daily);
+    forecast.innerHTML = '';
     for (i = 1; i < 6; i++) {
         // console.log(daily[i]);
         // console.log(daily[i].dt);
@@ -114,3 +143,5 @@ function displayFiveday(daily) {
         forecast.appendChild(humidityEl);
     }
 }
+
+searchHistory();
