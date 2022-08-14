@@ -30,11 +30,8 @@ THEN I am again presented with current and future conditions for that city
 
 Study group: Susan, Chris P, Sarah, Jackson, Ricky.
 
+Deployed url: https://smccarthy17.github.io/Challenge-6-WeatherDashboard/
 
-Deployed url:
 
 
 Screenshot:
-
-
-
