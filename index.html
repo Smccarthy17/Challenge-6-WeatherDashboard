@@ -6,44 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
+
     <h1>Weather Dashboard</h1>
     <div>
         <h2>Enter City</h2>
         <input id="city" type="text" />
         <button id="searchButton">Search</button>
-
-
     </div>
 
-    <div>
-        <h2 id="cityname"></h2>
-        <p id="temp"></p>
-        <p id="wind"></p>
-        <p id="humidity"></p>
+    <div class="col-9">
+        <div class="current-city">
+            <h2 id="cityname"></h2>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
+        </div>
 
-    </div>
+        <div>
+            <h2>UV Index</h2>
+            <p id="uvi"></p>
+        </div>
 
-    <div>
-        <h2>UV Index</h2>
-        <p id="uvi"></p>
-    </div>
+        <div>
+            <h2>5 Day Forecast</h2>
+            <div id="forecast"></div>
+        </div>
 
-    <div>
-        <h2>5 Day Forecast</h2>
-        <div id="forecast"></div>
-    </div>
+        <div>
+            <h2>Previous Searches</h2>
+            <div id="recent"></div>
+        </div>
 
-    <div>
-        <h2>Previous Searches</h2>
-        <div id="recent"></div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
