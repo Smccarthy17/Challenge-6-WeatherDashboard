@@ -28,7 +28,7 @@ function storeCity(cityname) {
 
 function searchHistory() {
     var savedCities = JSON.parse(localStorage.getItem('cityname'));
-    console.log('this is get item', savedCities);
+    // console.log('this is get item', savedCities);
     for (i = 0; i < savedCities.length; i++) {
         previousSearches(savedCities[i]);
     }
