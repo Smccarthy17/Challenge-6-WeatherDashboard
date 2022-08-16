@@ -27,10 +27,10 @@ function storeCity(cityname) {
 }
 
 function searchHistory() {
-    var savedCities = JSON.parse(localStorage.getItem('cityname'));
+    // var savedCities = JSON.parse(localStorage.getItem('cityname'));
     // console.log('this is get item', savedCities);
-    for (i = 0; i < savedCities.length; i++) {
-        previousSearches(savedCities[i]);
+    for (i = 0; i < cityList.length; i++) {
+        previousSearches(cityList[i]);
     }
 }
 
@@ -52,7 +52,7 @@ function uvindex(lat, lon) {
             // console.log('THIS IS UVI DATA', data);
             // console.log(data.current.uvi);
             var currentUVI = document.getElementById('uvi');
-            currentUVI.textContent = data.daily[0].uvi;
+            currentUVI.textContent = 'UV INDEX: ' + data.daily[0].uvi;
             displayFiveday(data.daily);
         });
 }
@@ -115,12 +115,13 @@ function displayFiveday(daily) {
         // console.log(daily[i].temp.day);
         // console.log(daily[i].wind_speed);
         // console.log(daily[i].weather[0].icon);
-
+        var subContainer = document.createElement('div');
+        subContainer.classList.add('card');
         var dates = document.createElement('p');
         var currentDates = moment.unix(daily[i].dt).format('MM/DD/YYYY');
         // console.log(currentDates);
         dates.textContent = currentDates;
-        forecast.appendChild(dates);
+        subContainer.appendChild(dates);
 
         var imageEl = document.createElement('img');
         imageEl.src =
@@ -128,19 +129,20 @@ function displayFiveday(daily) {
             daily[i].weather[0].icon +
             '.png';
         // console.log(imageEl);
-        forecast.appendChild(imageEl);
+        subContainer.appendChild(imageEl);
 
         var tempEl = document.createElement('p');
         tempEl.textContent = 'temp: ' + daily[i].temp.day + ' F';
-        forecast.appendChild(tempEl);
+        subContainer.appendChild(tempEl);
 
         var windEl = document.createElement('p');
         windEl.textContent = 'wind speed: ' + daily[i].wind_speed + ' MPH';
-        forecast.appendChild(windEl);
+        subContainer.appendChild(windEl);
 
         var humidityEl = document.createElement('p');
         humidityEl.textContent = 'humidity: ' + daily[i].humidity + '%';
-        forecast.appendChild(humidityEl);
+        subContainer.appendChild(humidityEl);
+        forecast.appendChild(subContainer);
     }
 }
 
