@@ -2,4 +2,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-image: radial-gradient(
+        rgb(241, 173, 63),
+        rgb(161, 241, 104),
+        lightseagreen
+    );
+}
+
+.currentUVI {
+    display: inline;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+}
+
+h1 {
+    background-image: radial-gradient(
+        rgb(241, 173, 63),
+        rgb(161, 241, 104),
+        lightseagreen
+    );
+    color: rgb(13, 64, 195);
+    font-size: 40px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+body {
+    background-color: rgb(246, 157, 49);
+}
+
+h2 {
+    font-size: 25px;
+    height: 50px;
+    margin-bottom: 0px;
 }
