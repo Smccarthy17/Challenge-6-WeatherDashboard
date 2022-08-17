@@ -6,7 +6,6 @@ Built with:
 HTML
 javaScript
 Css
-Bootstrap
 
 User Story
 
