@@ -36,7 +36,7 @@ function searchHistory() {
 
 function uvindex(lat, lon) {
     var request2URL =
-        'http://api.openweathermap.org/data/2.5/onecall?lat=' +
+        'https://api.openweathermap.org/data/2.5/onecall?lat=' +
         lat +
         '&lon=' +
         lon +
