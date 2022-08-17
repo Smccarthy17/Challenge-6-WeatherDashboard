@@ -36,5 +36,5 @@ Deployed url: https://smccarthy17.github.io/Challenge-6-WeatherDashboard/
 
 
 
-Screenshot: <img width="1600" alt="image" src="https://user-images.githubusercontent.com/90977936/184555895-709247ab-cd5c-49dd-8d1b-a872c2e3587a.png">
+<img width="1371" alt="image" src="https://user-images.githubusercontent.com/90977936/185214087-939842ae-5f5e-43f0-9634-f94c3954dc15.png">
 
